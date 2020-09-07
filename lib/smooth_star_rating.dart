@@ -18,9 +18,12 @@ class SmoothStarRating extends StatelessWidget {
   final IconData
       defaultIconData; //this is needed only when having fullRatedIconData && halfRatedIconData
   final double spacing;
+
+  final bool isReadOnly;
   SmoothStarRating({
+    this.isReadOnly = false,
     this.starCount = 5,
-    this.spacing=0.0,
+    this.spacing = 0.0,
     this.rating = 0.0,
     this.defaultIconData,
     this.onRatingChanged,
@@ -55,6 +58,10 @@ class SmoothStarRating extends StatelessWidget {
         color: color ?? Theme.of(context).primaryColor,
         size: size,
       );
+    }
+
+    if (isReadOnly) {
+      return icon;
     }
 
     return new GestureDetector(
